@@ -1,9 +1,11 @@
 'use strict'
-require('dotenv/config')
-const express = require('express')
-const bodyParser = require("body-parser")
-const mongoose = require("mongoose")
-const cors = require('cors')
+
+import 'dotenv/config';
+import express from 'express'
+import bodyParser from 'body-parser'
+import mongoose from 'mongoose'
+import cors from 'cors'
+
 
 //CONFIGURATION CORS
 var corsOptions = {
@@ -12,7 +14,7 @@ var corsOptions = {
   }
 
 //SERVICES
-const ProductService = require('./src/services/product.service')
+import ProductService from './services/product.service'
 
 const app = express()
 const port = process.env.PORT || 3000

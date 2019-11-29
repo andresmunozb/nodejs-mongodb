@@ -1,5 +1,5 @@
 //MODELS
-const Product = require('../models/product')
+import Product from '../models/product'
 
 const ProductService = {
     getAll(req, res) {
