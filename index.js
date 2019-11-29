@@ -1,8 +1,15 @@
 'use strict'
-
+require('dotenv/config')
 const express = require('express')
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
+const cors = require('cors')
+
+//CONFIGURATION CORS
+var corsOptions = {
+    origin: 'http://example.comasdfadf',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
 
 //SERVICES
 const ProductService = require('./src/services/product.service')
@@ -11,6 +18,7 @@ const app = express()
 const port = process.env.PORT || 3000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(cors(corsOptions))
 
 // API PRODUCTS
 app.get('/api/products', (req, res) => { ProductService.getAll(req, res) })
