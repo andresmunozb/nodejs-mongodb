@@ -5,7 +5,7 @@ const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 
 //SERVICES
-const ProductService = require('./services/product.service')
+const ProductService = require('./src/services/product.service')
 
 const app = express()
 const port = process.env.PORT || 3000
