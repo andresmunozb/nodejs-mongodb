@@ -6,21 +6,27 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cors from 'cors'
 
-
-//CONFIGURATION CORS
-var corsOptions = {
-    origin: 'http://example.comasdfadf',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }
-
 //SERVICES
 import ProductService from './services/product.service'
+
+//Configuracion CORS
+/*var whitelist = ['https://www.google.com/']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}*/
 
 const app = express()
 const port = process.env.PORT || 3000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(cors(corsOptions))
+app.use(cors()) // Como paramaetro de cors deben ir las configuraciones.
+
 
 // API PRODUCTS
 app.get('/api/products', (req, res) => { ProductService.getAll(req, res) })
