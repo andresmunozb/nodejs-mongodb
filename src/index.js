@@ -2,7 +2,6 @@
 
 import 'dotenv/config';
 import express from 'express'
-import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cors from 'cors'
 
@@ -23,8 +22,8 @@ var corsOptions = {
 
 const app = express()
 const port = process.env.PORT || 3000
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 app.use(cors()) // Como paramaetro de cors deben ir las configuraciones.
 
 
